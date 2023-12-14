@@ -266,14 +266,14 @@ def tangent():
             return "No existeix la tangent de 𝜋/2 i 3𝜋/2 radians"
     
 def arcsinus():
-    if not (numbers[0]>1 or numbers[0]<0):
+    if not (numbers[0]>1 or numbers[0]<-1):
         result=math.asin(numbers[0])
         return f"α = {result} Rad\nα = {round(math.degrees(result))} Deg"
     else:
         return "La funció sinus domes pot ser Sin(α)=n\nn∈[-1,1]"
 
 def arcosinus():
-    if not (numbers[0]>1 or numbers[0]<0):
+    if not (numbers[0]>1 or numbers[0]<-1):
         result=math.acos(numbers[0])
         return f"α = {result} Rad\nα = {round(math.degrees(result))} Deg"
     else:
