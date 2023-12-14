@@ -255,9 +255,15 @@ def cosinus():
     
 def tangent(): 
     if int(operate_option.get())==0:
-        return math.tan(math.radians(numbers[0]))
+        if numbers[0]!=90 and numbers[0]!=270:
+            return math.tan(math.radians(numbers[0]))
+        else:
+            return "No existeix la tangent de 90 i 270 graus"
     else:
-        return math.tan(numbers[0])
+        if numbers[0]!=math.pi/2 and numbers!=(math.pi*3)/2:
+            return math.tan(numbers[0])
+        else:
+            return "No existeix la tangent de 𝜋/2 i 3𝜋/2 radians"
     
 def arcsinus():
     if not (numbers[0]>1 or numbers[0]<0):
