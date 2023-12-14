@@ -6,7 +6,7 @@ num1=1
 num2=1
 numbers=[num1,num2]
 category_index=("Bàsic","Avançat","Trigonometria","Geometria")
-operations_index=(("Suma","Resta","Multiplicació","Divisió"),("Potencia","Arrel","Factorial","Factoritzar"),("Teorema de pitagores","Def. Sinus","Def. Cosinus","Def. Tangent","Sinus","Cosinus","Tangent","Arcsinus","Arcosinus","Arctangent"),("Triangle","Quadrilàter","Poligon regular","Circumferència"))
+operations_index=(("Suma","Resta","Multiplicació","Divisió"),("Potencia","Arrel","Factorial","Factoritzar"),("Teorema de Pitàgores","Def. Sinus","Def. Cosinus","Def. Tangent","Sinus","Cosinus","Tangent","Arcsinus","Arcosinus","Arctangent"),("Triangle","Quadrilàter","Poligon regular","Circumferència"))
 selected_operation=["Basic","Suma",[0,0]]
 symbols=("+","-","x","÷","√","X","α = X","α =          °","Sin(        )","Cos(        )","Tan(        )","ArcSin(        )","ArcCos(        )","ArcTan(        )")
 
@@ -77,7 +77,7 @@ def operate():
                     else:
                         return "Domes funciona amb nombres naturals (positius i enters)"
     elif selected_operation[0]=="Trigonometria":
-        if selected_operation[1]=="Teorema de pitagores":
+        if selected_operation[1]=="Teorema de Pitàgores":
             if comprovate_entries(2):
                 return t_pitagores()
         elif selected_operation[1]=="Def. Sinus":
@@ -211,33 +211,35 @@ def def_sinus():
 def def_cosinus():
     if int(operate_option.get())==0:
         if numbers[1]>numbers[0]:
-            return f"cos α = {numbers[0]/numbers[1]}\nα = {math.acos(numbers[0]/numbers[1])}"
+            result = math.acos(numbers[0]/numbers[1])
+            return f"Cos α = {numbers[0]/numbers[1]}\nα = {result} Rad\nα = {round(math.degrees(result))} Deg"
         else:
             return "La hipotenusa ha de ser major al catet"
     elif int(operate_option.get())==1:
         if numbers[1]>=90 or numbers[1]<0:
             return "Angle imposible"
         else:
-            return math.cos(numbers[0])*numbers[1]
+            return math.cos(math.radians(numbers[0]))*numbers[1]
     else:
         if numbers[1]>=90 or numbers[1]<0:
             return "Angle imposible"
         else:
-            return numbers[1]/(math.cos(numbers[0]))
+            return numbers[1]/(math.cos(math.radians(numbers[0])))
         
 def def_tangent():
     if int(operate_option.get())==0:
-        return f"tan α = {numbers[0]/numbers[1]}\nα = {math.atan(numbers[0]/numbers[1])}"
+        result = math.atan(numbers[0]/numbers[1])
+        return f"Tan α = {numbers[0]/numbers[1]}\nα = {result} Rad\nα = {round(math.degrees(result))} Deg"
     elif int(operate_option.get())==1:
         if numbers[0]>90 or numbers[0]<0:
             return "Angle imposible"
         else:
-            return math.tan(numbers[0])*numbers[1]
+            return math.tan(math.radians(numbers[0]))*numbers[1]
     else:
         if numbers[0]>90 or numbers[0]<0:
             return "Angle imposible"
         else:
-            return numbers[1]/math.tan(numbers[0])
+            return numbers[1]/math.tan(math.radians(numbers[0]))
 
 def sinus():
     if int(operate_option.get())==0:
@@ -441,7 +443,7 @@ teoremes_definicions_trigonometria_menu=tk.Menu(trigonometria_menu,tearoff=0)
 trigonometria_menu.add_cascade(menu=teoremes_definicions_trigonometria_menu,label="Teoremes i definicions")
 
 
-teoremes_definicions_trigonometria_menu.add_command(label="Teorema de Pitagores",command=menu_pitagores)
+teoremes_definicions_trigonometria_menu.add_command(label="Teorema de Pitàgores",command=menu_pitagores)
 teoremes_definicions_trigonometria_menu.add_command(label="Definició de Sinus",command=menu_def_sinus)
 teoremes_definicions_trigonometria_menu.add_command(label="Definició de Cosinus",command=menu_def_cosinus)
 teoremes_definicions_trigonometria_menu.add_command(label="Definició de Tangent",command=menu_def_tangent)
